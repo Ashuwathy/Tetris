@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 from Block import Block
 from Board import Board
@@ -6,9 +8,11 @@ from constant import cols, rows, white, yellow
 
 class Actions(Block):
 
-    def __init__(self, board):
-        super().__init__()
-        self.board = board
+    def __init__(self):
+        self.board = Board()
+        self.board.Grid()
+        super().__init__(self.board.screen)
+        self.Block_piece()
         self.rotate_flag = -1
 
     def collision_detection(self, offset):
@@ -44,4 +48,26 @@ class Actions(Block):
             else:
                 self.tetris_block = rotate_matrix.clockwise(self.tetris_block)
                 self.rotate_flag = -1
+            self.drawBlock(yellow)
+
+
+    def join_board_block(self):
+        for j, row in enumerate(self.tetris_block):
+            for i, val in enumerate(row):
+                self.board.board[j + self.block_y][i + self.block_x] = val
+
+    def drop(self):
+        new_block_y = self.block_y + 1
+        if new_block_y + (len(self.tetris_block)-1) >= rows or self.collision_detection(offset=new_block_y):
+            self.join_board_block()
+            self.board.remove_row()
+            for j, row in enumerate(self.board.board):
+                if 1 in row:
+                    sys.exit()
+                else:
+                    break
+            self.Block_piece()
+        else:
+            self.drawBlock(white)
+            self.block_y = new_block_y
             self.drawBlock(yellow)
