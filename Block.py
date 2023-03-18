@@ -4,15 +4,15 @@ from constant import tetris_shapes, blockSize, cols, grey, yellow
 from Board import Board
 class Block:
 
-    def __init__(self):
-        self.board = Board()
+    def __init__(self, screen):
         self.block_x = None
         self.block_y = None
         self.tetris_block = None
+        self.screen = screen
 
     def Block_piece(self):
         self.tetris_block = random.choice(tetris_shapes)
-        self.block_x = int(cols / 2 - len(self.tetris_block) / 2)
+        self.block_x = int(cols / 2 - len(self.tetris_block[0]) / 2)
         self.block_y = 0
         self.drawBlock(yellow)
 
@@ -22,6 +22,6 @@ class Block:
             for i, val in enumerate(row):
                 if val:
                     rect = pygame.Rect((self.block_x+i)*blockSize, (self.block_y+j)*blockSize, blockSize, blockSize)
-                    pygame.draw.rect(self.board.screen, color, rect, 0)
-                    pygame.draw.rect(self.board.screen, grey, rect, 1)
+                    pygame.draw.rect(self.screen, color, rect, 0)
+                    pygame.draw.rect(self.screen, grey, rect, 1)
         pygame.display.update()

@@ -1,17 +1,13 @@
 import pygame
 from Board import Board
-from Block import Block
 from Actions import Actions
 class Game:
 
     def __init__(self):
-        self.board = Board()
-        self.actions = Actions(self.board)
+        self.actions = Actions()
 
     def Render(self):
         running = True
-        self.board.Grid()
-        self.actions.Block_piece()
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
