@@ -19,6 +19,8 @@ class Game:
                         self.actions.moveBlock(+1)
                     if event.key == pygame.K_UP:
                         self.actions.rotate()
+                    if event.key == pygame.K_DOWN:
+                        self.actions.drop()
                 else:
                     pass
 

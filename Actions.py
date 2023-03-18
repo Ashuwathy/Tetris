@@ -1,3 +1,5 @@
+import sys
+
 import pygame
 from Block import Block
 from Board import Board
@@ -52,13 +54,18 @@ class Actions(Block):
     def join_board_block(self):
         for j, row in enumerate(self.tetris_block):
             for i, val in enumerate(row):
-                self.board.board[j + self.block_y-1][i + self.block_x] = val
+                self.board.board[j + self.block_y][i + self.block_x] = val
 
     def drop(self):
         new_block_y = self.block_y + 1
         if new_block_y + (len(self.tetris_block)-1) >= rows or self.collision_detection(offset=new_block_y):
             self.join_board_block()
             self.board.remove_row()
+            for j, row in enumerate(self.board.board):
+                if 1 in row:
+                    sys.exit()
+                else:
+                    break
             self.Block_piece()
         else:
             self.drawBlock(white)

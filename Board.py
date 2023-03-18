@@ -1,11 +1,9 @@
 import pygame
-from constant import cols, rows, blockSize, s_width, s_height, white, grey
+from constant import cols, rows, blockSize, width, height, white, grey
 
 class Board:
     def __init__(self):
-        self.width = cols*blockSize
-        self.height = cols*blockSize
-        self.screen = pygame.display.set_mode((self.width, self.height))
+        self.screen = pygame.display.set_mode((width, height))
         self.screen.fill(white)
         self.board = None
 
@@ -22,7 +20,7 @@ class Board:
         pygame.display.update()
 
     def remove_row(self):
-        for j, row in enumerate(self.board[:-1]):
+        for j, row in enumerate(self.board[::-1]):
             if 0 not in row:
                 del self.board[row]
                 self.board = [[0 for _ in range(cols)]] + self.board
