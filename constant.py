@@ -20,3 +20,4 @@ rows = 10
 blockSize = 25
 grey = (200, 200, 200)
 white = (255, 255, 255)
+yellow = (255, 165, 0)
