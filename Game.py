@@ -8,15 +8,16 @@ class Game:
 
     def Render(self):
         running = True
-        # time_delay = 500
-        # timer_event = pygame.USEREVENT + 1
-        # pygame.time.set_timer(timer_event, time_delay)
+        time_delay = 1000
+        timer_event = pygame.USEREVENT + 1
+        pygame.time.set_timer(timer_event, time_delay)
+        clock = pygame.time.Clock()
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
-                # if event.type == timer_event:
-                #     self.actions.drop()
+                if event.type == timer_event:
+                    self.actions.drop()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
                         self.actions.moveBlock(-1)
@@ -28,6 +29,7 @@ class Game:
                         self.actions.drop()
                 else:
                     pass
+            clock.tick(60)
 
 
 if __name__ == '__main__':
