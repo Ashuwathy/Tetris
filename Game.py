@@ -8,10 +8,15 @@ class Game:
 
     def Render(self):
         running = True
+        # time_delay = 500
+        # timer_event = pygame.USEREVENT + 1
+        # pygame.time.set_timer(timer_event, time_delay)
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
+                # if event.type == timer_event:
+                #     self.actions.drop()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_LEFT:
                         self.actions.moveBlock(-1)

@@ -1,6 +1,6 @@
 import pygame
 import random
-from constant import tetris_shapes, blockSize, cols, grey, yellow
+from constant import tetris_shapes, blockSize, cols, grey, colors
 from Board import Board
 class Block:
 
@@ -8,13 +8,15 @@ class Block:
         self.block_x = None
         self.block_y = None
         self.tetris_block = None
+        self.color = None
         self.screen = screen
 
     def Block_piece(self):
         self.tetris_block = random.choice(tetris_shapes)
         self.block_x = int(cols / 2 - len(self.tetris_block[0]) / 2)
         self.block_y = 0
-        self.drawBlock(yellow)
+        self.color = random.choice(colors)
+        self.drawBlock(self.color)
 
 
     def drawBlock(self, color):

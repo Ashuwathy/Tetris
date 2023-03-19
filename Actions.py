@@ -1,10 +1,11 @@
+import random
 import sys
 
 import pygame
 from Block import Block
 from Board import Board
 import rotate_matrix
-from constant import cols, rows, white, yellow
+from constant import cols, rows, white
 
 class Actions(Block):
 
@@ -33,7 +34,7 @@ class Actions(Block):
         else:
             self.drawBlock(white)
             self.block_x = new_block_x
-            self.drawBlock(yellow)
+            self.drawBlock(self.color)
 
     def rotate(self):
         if self.block_y + len(self.tetris_block) >= rows or self.collision_detection(offset=self.block_y+1):
@@ -48,7 +49,7 @@ class Actions(Block):
             else:
                 self.tetris_block = rotate_matrix.clockwise(self.tetris_block)
                 self.rotate_flag = -1
-            self.drawBlock(yellow)
+            self.drawBlock(self.color)
 
 
     def join_board_block(self):
@@ -70,4 +71,4 @@ class Actions(Block):
         else:
             self.drawBlock(white)
             self.block_y = new_block_y
-            self.drawBlock(yellow)
+            self.drawBlock(self.color)

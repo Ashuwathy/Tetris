@@ -13,11 +13,19 @@ tetris_shapes = [
      [1, 1]]
 ]
 
-cols = 10
-rows = 25
+cols = 6
+rows = 12
 blockSize = 20
 width = cols*blockSize
 height = rows*blockSize
+colors = [
+    (255, 0, 0),
+    (0, 150, 0),
+    (0, 0, 255),
+    (255, 120, 0),
+    (255, 255, 0),
+    (180, 0, 255),
+    (0, 220, 220)
+]
 grey = (200, 200, 200)
 white = (255, 255, 255)
-yellow = (255, 165, 0)
